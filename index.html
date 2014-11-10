@@ -187,15 +187,41 @@ console.log(recast.print(ast).code);</pre>
         </section>
 
         <section>
-          <h1><code>recast.parse</code></h1>
+          <h2><code>recast.parse</code></h2>
+          <pre class="fragment small"
+               data-language="javascript">
+var foo = recast.parse("foo;").program.body[0];
+
+assert.deepEqual(foo, {
+  "type": "ExpressionStatement",
+  "expression": {
+    "type": "Identifier",
+    "name": "foo",
+    "original": { // Identical to foo.original.expression.
+      "type": "Identifier",
+      "name": "foo",
+      "loc": { "start": { "line": 1, "column": 0 },
+               "end": { "line": 1, "column": 3 } }
+    },
+  },
+  "original": {
+    "type": "ExpressionStatement",
+    "expression": { // Identical to foo.expression.original.
+      "type": "Identifier",
+      "name": "foo",
+      "loc": { "start": { "line": 1, "column": 0 },
+               "end": { "line": 1, "column": 4 } }
+    }
+  }
+});</pre>
         </section>
 
         <section>
-          <h1><code>recast.visit</code></h1>
+          <h2><code>recast.visit</code></h2>
         </section>
 
         <section>
-          <h1><code>recast.print</code></h1>
+          <h2><code>recast.print</code></h2>
         </section>
 
         <section>
