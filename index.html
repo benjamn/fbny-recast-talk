@@ -170,14 +170,14 @@ console.log(recast.print(ast).code);</pre>
           <br>
           <ol>
             <li class="fragment">
-              to give (a metal object) a different form by melting it down
-              and reshaping it.
+              to give (a metal object) a different form by melting<br>
+              it down and reshaping it.
             </li>
             <li class="fragment">
               to form, fashion, or arrange again.
             </li>
             <li class="fragment">
-              to remodel or reconstruct (a literary work, document,
+              to remodel or reconstruct (a literary work, document,<br>
               sentence, etc.).
             </li>
             <li class="fragment">
@@ -232,6 +232,295 @@ assert.deepEqual(foo, {
               only a suggestion!)</span>
             </li>
           </ul>
+        </section>
+
+        <section>
+          <h2>Example: <code>=></code> function syntax</h2>
+          <br>
+          <div>
+            <b>Input (ES6):</b>
+            <br>
+            <br>
+            <pre id="arrow-fn-input"
+                 class="fragment big"
+                 data-language="javascript">
+[3, 1, 10, 28].sort((a, b) => a - b)</pre>
+            <br>
+            <br>
+            <b>Output (ES5):</b>
+            <br>
+            <br>
+            <pre id="arrow-fn-output"
+                 class="fragment big"
+                 data-language="javascript">
+            </pre>
+            <script>
+              makeCodeMirror(
+                "arrow-fn-input",
+                "arrow-fn-output",
+                transforms.transformArrowFunctions
+              );
+            </script>
+          </div>
+        </section>
+
+        <section>
+          <h3>First, import some utilities and parse the code:</h3>
+          <br>
+          <pre class="fragment big"
+               data-language="javascript">
+var recast = require("recast");
+var n = recast.types.namedTypes;
+var b = recast.types.builders;
+
+var ast = recast.parse(
+  "[3, 1, 10, 28].sort((a, b) => a - b)"
+);</pre>
+        </section>
+
+        <section id="arrow-fn-traverse">
+          <section data-transition="none">
+            <h3>Next, traverse and modify the syntax tree:</h3>
+            <br>
+            <pre class="small" data-language="javascript">
+recast.visit(ast, {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+});</pre>
+          </section>
+
+          <section data-transition="none">
+            <h3>Next, traverse and modify the syntax tree:</h3>
+            <br>
+            <pre class="small" data-language="javascript">
+recast.visit(ast, {
+  visitArrowFunctionExpression: function(path) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }
+});</pre>
+          </section>
+
+          <section data-transition="none">
+            <h3>Next, traverse and modify the syntax tree:</h3>
+            <br>
+            <pre class="small" data-language="javascript">
+recast.visit(ast, {
+  visitArrowFunctionExpression: function(path) {
+    var node = path.node;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }
+});</pre>
+          </section>
+
+          <section data-transition="none">
+            <h3>Next, traverse and modify the syntax tree:</h3>
+            <br>
+            <pre class="small" data-language="javascript">
+recast.visit(ast, {
+  visitArrowFunctionExpression: function(path) {
+    var node = path.node;
+
+    if (!n.BlockStatement.check(node.body)) {
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+  }
+});</pre>
+          </section>
+
+          <section data-transition="none">
+            <h3>Next, traverse and modify the syntax tree:</h3>
+            <br>
+            <pre class="small" data-language="javascript">
+recast.visit(ast, {
+  visitArrowFunctionExpression: function(path) {
+    var node = path.node;
+
+    if (!n.BlockStatement.check(node.body)) {
+      n.Expression.assert(node.body);
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+  }
+});</pre>
+          </section>
+
+          <section data-transition="none">
+            <h3>Next, traverse and modify the syntax tree:</h3>
+            <br>
+            <pre class="small" data-language="javascript">
+recast.visit(ast, {
+  visitArrowFunctionExpression: function(path) {
+    var node = path.node;
+
+    if (!n.BlockStatement.check(node.body)) {
+      n.Expression.assert(node.body);
+      node.body = b.blockStatement([b.returnStatement(node.body)]);
+
+    }
+
+
+
+
+
+
+
+
+
+
+  }
+});</pre>
+          </section>
+
+          <section data-transition="none">
+            <h3>Next, traverse and modify the syntax tree:</h3>
+            <br>
+            <pre class="small" data-language="javascript">
+recast.visit(ast, {
+  visitArrowFunctionExpression: function(path) {
+    var node = path.node;
+
+    if (!n.BlockStatement.check(node.body)) {
+      n.Expression.assert(node.body);
+      node.body = b.blockStatement([b.returnStatement(node.body)]);
+      node.expression = false;
+    }
+
+
+
+
+
+
+
+
+
+
+  }
+});</pre>
+          </section>
+
+          <section data-transition="none">
+            <h3>Next, traverse and modify the syntax tree:</h3>
+            <br>
+            <pre class="small" data-language="javascript">
+recast.visit(ast, {
+  visitArrowFunctionExpression: function(path) {
+    var node = path.node;
+
+    if (!n.BlockStatement.check(node.body)) {
+      n.Expression.assert(node.body);
+      node.body = b.blockStatement([b.returnStatement(node.body)]);
+      node.expression = false;
+    }
+
+    var funExp = b.functionExpression(
+      node.id, node.params, node.body,
+      node.generator, node.expression
+    );
+
+
+
+
+
+  }
+});</pre>
+          </section>
+
+          <section data-transition="none">
+            <h3>Next, traverse and modify the syntax tree:</h3>
+            <br>
+            <pre class="small" data-language="javascript">
+recast.visit(ast, {
+  visitArrowFunctionExpression: function(path) {
+    var node = path.node;
+
+    if (!n.BlockStatement.check(node.body)) {
+      n.Expression.assert(node.body);
+      node.body = b.blockStatement([b.returnStatement(node.body)]);
+      node.expression = false;
+    }
+
+    var funExp = b.functionExpression(
+      node.id, node.params, node.body,
+      node.generator, node.expression
+    );
+
+    return b.callExpression(
+      b.memberExpression(funExp, b.identifier("bind"), false),
+      [b.thisExpression()]
+    );
+  }
+});</pre>
+          </section>
         </section>
 
         <section>
