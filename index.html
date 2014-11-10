@@ -244,11 +244,81 @@ assert.deepEqual(foo, {
                   target="_blank">lib/printer.js</a>)
             </li>
             <li class="fragment">
-              Patching re-printer
+              Patching reprinter
               (<a href="https://github.com/benjamn/recast/blob/master/lib/patcher.js"
                   target="_blank">lib/patcher.js</a>)
             </li>
           </ul>
+          <br>
+          <br>
+          <br>
+          <div class="fragment">
+            Instead of simply pretty-printing the whole syntax
+            tree, <code>recast.print</code> tries to recyle the original
+            source code wherever possible.
+          </div>
+        </section>
+
+        <section>
+          <h3>
+            &ldquo;Non-destructive partial source transformation&rdquo;<br><br>
+            &ndash; <a target="_blank" href="https://github.com/ariya">Ariya Hidayat</a>
+          </h3>
+        </section>
+
+        <section>
+          <h2>Moral hazard:</h2>
+          <br>
+          <ul>
+            <li class="fragment">be the laziest, most productive programmer you know</li>
+            <li class="fragment">be the the change you want to see in the world</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Confession:</h2>
+          <br>
+          <h3 class="fragment">
+            I gave into temptation for a time.
+          </h3>
+        </section>
+
+        <section>
+          <img src="img/TagToken.js.diff.png" />
+        </section>
+
+        <section>
+          <h2>All told:</h2>
+          <br>
+          <div class="fragment">1647 files changed</div>
+          <div class="fragment">76555 insertions(+)</div>
+          <div class="fragment">78260 deletions(-)</div>
+          <br>
+          <div class="fragment">1658 classes converted</div>
+          <div class="fragment">3582 classes today</div>
+          <aside class="notes">
+            That's 1924 classes that have been written by other people in
+            the ES6 style in the last six months.
+          </aside>
+        </section>
+
+        <section>
+          <pre class="big" data-language="shell">
+find ~/www/html/js/lib | \
+  grep "\.js$" | \
+  time parallel ~/www/scripts/bin/classify --update
+
+228.03s user 12.25s system 1229% cpu 19.548 total</pre>
+          <br>
+          <br>
+          <h3 class="fragment">
+            In case you're curious about the details, I gave a whole talk
+            about this project back in March:
+            <a href="http://benjamn.github.io/pivotal-meetup-talk/#/21"
+                target="_blank">slides</a>,
+            <a href="https://www.youtube.com/watch?v=z_qc4T4BCGc&t=19m23s"
+               target="_blank">video</a>.
+          </h3>
         </section>
 
         <section>
@@ -577,61 +647,6 @@ console.log(recast.print(ast).code);</pre>
 
         <section data-transition="zoom">
           <img class="interstitial" src="img/moma_ps1_cracked_paint.jpg" />
-        </section>
-
-        <section>
-          <h2>Moral hazard:</h2>
-          <br>
-          <ul>
-            <li class="fragment">be the laziest, most productive programmer you know</li>
-            <li class="fragment">be the the change you want to see in the world</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Confession:</h2>
-          <br>
-          <h3 class="fragment">
-            I gave into temptation for a time.
-          </h3>
-        </section>
-
-        <section>
-          <img src="img/TagToken.js.diff.png" />
-        </section>
-
-        <section>
-          <h2>All told:</h2>
-          <br>
-          <div class="fragment">1647 files changed</div>
-          <div class="fragment">76555 insertions(+)</div>
-          <div class="fragment">78260 deletions(-)</div>
-          <br>
-          <div class="fragment">1658 classes converted</div>
-          <div class="fragment">3582 classes today</div>
-          <aside class="notes">
-            That's 1924 classes that have been written by other people in
-            the ES6 style in the last six months.
-          </aside>
-        </section>
-
-        <section>
-          <pre class="big" data-language="shell">
-find ~/www/html/js/lib | \
-  grep "\.js$" | \
-  time parallel ~/www/scripts/bin/classify --update
-
-228.03s user 12.25s system 1229% cpu 19.548 total</pre>
-          <br>
-          <br>
-          <h3 class="fragment">
-            In case you're curious about the details, I gave a whole talk
-            about this project back in March:
-            <a href="http://benjamn.github.io/pivotal-meetup-talk/#/21"
-                target="_blank">slides</a>,
-            <a href="https://www.youtube.com/watch?v=z_qc4T4BCGc&t=19m23s"
-               target="_blank">video</a>.
-          </h3>
         </section>
 
         <section data-transition="zoom">
