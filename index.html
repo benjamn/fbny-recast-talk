@@ -28,7 +28,7 @@
     <script src="CodeMirror/mode/shell/shell.js"></script>
     <script src="js/editor.js"></script>
 
-    <script src="node_modules/transforms/bundle.min.js"></script>
+    <script src="node_modules/transforms/bundle.js"></script>
   </head>
 
   <body>
@@ -210,34 +210,47 @@
           <img class="interstitial" src="img/rusty_hydrant.jpg" />
         </section>
 
-        <section>
-          <h2>Example: <code>=></code> function syntax</h2>
+        <section class="two-up" data-transition="none">
+          <h2>Once upon a time at
+            <a href="http://quora.com/" target="_blank">Quora</a>
+          </h2>
           <br>
           <div>
-            <b>Input (ES6):</b>
-            <br>
-            <br>
-            <pre id="arrow-fn-input"
-                 class="fragment big"
+            <pre id="event-delegation-input"
+                 class="small left fragment"
                  data-language="javascript">
-[3, 1, 10, 28].sort((a, b) => a - b)</pre>
-            <br>
-            <br>
-            <b>Output (ES5):</b>
-            <br>
-            <br>
-            <pre id="arrow-fn-output"
-                 class="fragment big"
+var Answer = Component.extend({
+  onLoad: function() {
+    var params = { uid: this.viewer, aid: this.answer };
+
+    this.$("#upvote").click(this.bind(function() {
+      this.serverCall("upvote", params).send();
+    }));
+
+    this.$("#downvote").click(this.bind(function() {
+      this.serverCall("downvote", params).send();
+    }));
+
+    this.$("body").bind("scroll", this.bind(function() {
+      // Every time the viewport scrolls, check visibility.
+      if (this.$("#container").inViewport()) {
+        this.serverCall("viewed_answer", params).send();
+      }
+    }));
+  }
+});</pre>
+            <pre id="event-delegation-output"
+                 class="small right fragment"
                  data-language="javascript">
             </pre>
-            <script>
-              makeCodeMirror(
-                "arrow-fn-input",
-                "arrow-fn-output",
-                transforms.transformArrowFunctions
-              );
-            </script>
           </div>
+          <script>
+            makeCodeMirror(
+              "event-delegation-input",
+              "event-delegation-output",
+              transforms.transformEvents
+            );
+          </script>
         </section>
 
         <section>
