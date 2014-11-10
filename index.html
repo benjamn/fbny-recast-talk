@@ -34,22 +34,18 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>
-          <h2>
-            easing into ECMAScript 6<br>
-            and beyond
-          </h2>
+        <section data-transition="none">
+          <h2><a href="https://github.com/benjamn/recast"
+                 target="_blank">Recast</a>: Why and How</h2>
           <br>
           <p>
             <a href="https://github.com/benjamn/"
                target="_blank">Ben Newman</a>
             (<a href="https://meteor.com/"
                 target="_blank">Meteor</a>)<br>
-            <a href="https://github.com/hammerlab/"
-               target="_blank">Hammer Lab</a> @
-            <a href="http://icahn.mssm.edu/"
-               target="_blank">Icahn</a><br>
-            September 23, 2014
+            <a href="https://code.facebook.com/projects/"
+               target="_blank">Facebook New York</a><br>
+            10 November 2014
             <br>
             <br>
             <pre class="contact">
@@ -59,155 +55,6 @@
   <a target="_blank" href="http://facebook.com/benjamn">facebook</a>
 }.com/benjamn</pre>
           </p>
-        </section>
-
-        <section class="external_iframe">
-          <h2>Wikipedia</h2>
-          <!-- TODO: Jump to #Headings_and_publication_titles -->
-          <iframe src="http://en.wikipedia.org/wiki/Letter_case"></iframe>
-        </section>
-
-        <section class="external_iframe">
-          <h2>titlecapitalization.com</h2>
-          <iframe src="http://titlecapitalization.com/"></iframe>
-        </section>
-
-        <section>
-          <h2>
-            We have the opportunity, <span class="fragment">as
-            technologists,</span> <span class="fragment">to make certain
-            kinds of problems
-            disappear</span> <span class="fragment">permanently.</span>
-          </h2>
-        </section>
-
-        <section data-transition="zoom">
-          <img class="interstitial" src="img/trailer_wreck.jpg" />
-        </section>
-
-        <section>
-          <h3><a href="http://facebook.github.io/regenerator/"
-                 target="_blank">facebook.github.io/regenerator</a></h3>
-          <img id="call_to_action" src="img/call_to_action.png" />
-        </section>
-
-        <section>
-          <h2>
-            &ldquo;We should have been doing it this way all along!&rdquo;
-          </h2>
-          <aside class="notes">
-            <p>
-              Congratulations! You're not done.
-            </p>
-            <p>
-              Not even if you're right.
-            </p>
-            <p>
-              Not even if <i>everyone agrees</i> that you're right.
-            </p>
-          </aside>
-        </section>
-
-        <section>
-          <h2>
-            GitHub is strewn with better ways of doing things that never
-            quite caught on.
-          </h2>
-          <aside class="notes">
-            <p>
-              Code just left there without warranty of any kind, either
-              expressed or implied, in the vague hope that other people
-              face needs that are similar to the ones that motivated the
-              author.
-            </p>
-            <p>
-              Often &ldquo;better&rdquo; just means &ldquo;better tailored
-              to my particular use case.&rdquo;
-            </p>
-            <p>
-              In which case there's no mystery why the evangelical message
-              went nowhere.
-            </p>
-          </aside>
-        </section>
-
-        <section>
-          <h2>
-            There has to be a way forward.
-          </h2>
-          <aside class="notes">
-            <p>
-              And it can't involve throwing away all of your code and
-              starting over from scratch, as tempting as that might be.
-            </p>
-            <p>
-              As the evangelist, you have a responsibility to yourself, to
-              your ideas, and to the people you want to help, to devise
-              and execute an incremental migration plan.
-            </p>
-            <p>
-              Other people won't be willing to buy in unless you justify
-              the effort and short-term increase in complexity.
-            <p>
-          </aside>
-        </section>
-
-        <section>
-          <h2>
-            Programming languages are notoriously difficult to &ldquo;fix
-            forward.&rdquo;
-          </h2>
-          <br>
-          <p class="fragment">
-            Why isn't every Python project using Python 3 yet?
-          </p>
-          <aside class="notes">
-            <p>It has that <code>2to3</code> script.</p>
-            <p>The maintainers have realistic expectations.</p>
-            <p>Biggest barrier: changes in unicode semantics.</p>
-            <p>
-              Attempting to solve a problem once and for all typically
-              requires adapting many different, somewhat-functional past
-              solutions.
-            </p>
-          </aside>
-        </section>
-
-        <section>
-          <h2>
-            How can ECMAScript 6<br>
-            <span class="fragment">avoid the Python 3 trap?</span>
-          </h2>
-          <br>
-          <p>
-            <span class="fragment"><b>Crazy idea:</b></span>
-            <span class="fragment"><em>ease</em> into the new
-            language</span> <span class="fragment">by <em>simulating</em>
-            its most useful features</span> <span class="fragment">in
-            the <em>current</em> version of JavaScript (ECMAScript
-            5).</span>
-          </p>
-          <aside class="notes">
-            <p>
-              The great virtue of this idea is that it makes sense at
-              every stage.
-            </p>
-            <p>
-              Even if it never ultimately connects with the next version
-              of the language, or takes a long time getting there, we
-              still benefit.
-            </p>
-          </aside>
-        </section>
-
-        <section>
-          <h3>
-            &ldquo;Linguistic time travel&rdquo;
-          </h3>
-        </section>
-
-        <section data-transition="zoom">
-          <img class="interstitial" src="img/rusty_hydrant.jpg" />
         </section>
 
         <section class="two-up" data-transition="none">
@@ -251,6 +98,104 @@ var Answer = Component.extend({
               transforms.transformEvents
             );
           </script>
+        </section>
+
+        <section>
+          <h2>Benefits</h2>
+          <br>
+          <ul>
+            <li class="fragment">Improved page load times</li>
+            <li class="fragment">Decreased memory usage</li>
+            <li class="fragment">Early events are never lost</li>
+            <li class="fragment">New HTML works immediately</li>
+            <li class="fragment">Reduced dependency on jQuery</li>
+            <li class="fragment">Declarative style?</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>I'm overselling it.</h1>
+          <br>
+          <h3 class="fragment">
+            In professional software development, you can almost never
+            justify climbing the tree to pick medium-hanging fruit when
+            there's plenty of lower-hanging fruit left.
+          </h3>
+        </section>
+
+        <section>
+          <h1><a href="https://golang.org/cmd/gofmt/"
+                 target="_blank"><code>gofmt</code></a>?</h1>
+          <br>
+          <ul>
+            <li class="fragment">Easier to grep</li>
+            <li class="fragment">Easier to review refactored code</li>
+            <li class="fragment">Easier to read third party code</li>
+            <li class="fragment">Strong conventions are good</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Sure...</h1>
+          <br>
+          <h3 class="fragment">
+            Using blunt tools together can make them slightly more
+            powerful.
+          </h3>
+          <br>
+          <h3 class="fragment">
+            But try getting the JavaScript community to adopt a tool
+            like <code>jsfmt</code>.
+          </h3>
+        </section>
+
+        <section>
+          <h2>
+            What we really need is a taller ladder!
+          </h2>
+        </section>
+
+        <section>
+          <h2>Meet Recast:</h2>
+          <br>
+          <pre class="fragment big" data-language="javascript">
+var recast = require("recast");
+var ast = recast.parse(source);
+transform(ast); // Anything goes.
+console.log(recast.print(ast).code);</pre>
+        </section>
+
+        <section>
+          <h2><a target="_blank" href="https://github.com/benjamn/recast">recast</a>, <em>v</em>.</h2>
+          <br>
+          <ol>
+            <li class="fragment">
+              to give (a metal object) a different form by melting it down
+              and reshaping it.
+            </li>
+            <li class="fragment">
+              to form, fashion, or arrange again.
+            </li>
+            <li class="fragment">
+              to remodel or reconstruct (a literary work, document,
+              sentence, etc.).
+            </li>
+            <li class="fragment">
+              to supply (a theater or opera work) with a new cast.
+            </li>
+          </ol>
+        </section>
+
+        <section>
+          <h1><code>recast.parse</code></h1>
+        </section>
+
+        <section>
+          <h1><code>recast.visit</code></h1>
+        </section>
+
+        <section>
+          <h1><code>recast.print</code></h1>
         </section>
 
         <section>
